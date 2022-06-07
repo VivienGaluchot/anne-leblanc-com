@@ -1,6 +1,6 @@
-# Hugo tryal
+# Anne leblanc com
 
-Demo at [https://viviengaluchot.github.io/hugo-tryal/public/](https://viviengaluchot.github.io/hugo-tryal/public/).
+Demo at [https://viviengaluchot.github.io/anne-leblanc-com/public/](https://viviengaluchot.github.io/anne-leblanc-com/public/).
 
 
 # Dev container

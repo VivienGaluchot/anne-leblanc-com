@@ -1,12 +1,13 @@
 {{ define "main" }}
 <main>
     <div>
-        <h1>{{ .Type | title | singularize }} | <b>{{ .Title }}</b></h1>
+        <h1>{{.Title}}</h1>
         {{ with .Params.subtitle }}
         <span>{{.}}</span>
         {{ end }}
     </div>
     <div class="my-4">
+        {{ block "test-block" . }}TEST{{ end }}
         {{.Content}}
     </div>
     <div class="my-5">
@@ -18,7 +19,7 @@
                 page
             {{ end }}
         {{ end }}
-    
+        
         {{ range .Pages }}
         <div class="my-3">
             {{ partial  "card_summary" . }}
