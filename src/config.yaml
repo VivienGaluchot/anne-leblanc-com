@@ -1,0 +1,7 @@
+baseURL: 'https://viviengaluchot.github.io/anne-leblanc-com/public/'
+languageCode: 'en-us'
+title: 'Anne Leblanc'
+theme: 'tryaltheme'
+taxonomies:
+    category: categories
+    tag: tags

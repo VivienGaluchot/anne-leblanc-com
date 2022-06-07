@@ -1,0 +1,31 @@
+<div class="card a-card" data-href="{{ .Permalink }}">
+    {{ if .Params.header_imgs }}
+        {{ $page := .Page }}
+        {{ range first 1 .Params.header_imgs }}
+        {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
+        {{ partial "render-image" (dict "src" $src "class" "img-fluid card-summary-top card-img-top") }}
+        {{ end }}
+    {{ end }}
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h5 class="card-title">
+                    {{ .Title }}
+                </h5>
+            </div>
+            <div class="col-auto">
+                {{ if .Draft }}<span class="badge rounded-pill bg-warning text-dark">draft</span>{{ end }}
+            </div>
+            <div class="col-auto text-muted fw-lighter">
+                {{ .Date.Format "02/01/2006" }}
+            </div>
+        </div>
+        <h6 class="card-subtitle mb-2 text-muted">{{ .Params.subtitle }}</h6>
+        <div class="mb-3">
+            {{ partial "taxonomy" . }}
+        </div>
+        <p class="card-text">{{ .Summary }}</p>
+        <a class="card-link" href="{{ .Permalink }}">See more</a>
+    </div>
+</div>

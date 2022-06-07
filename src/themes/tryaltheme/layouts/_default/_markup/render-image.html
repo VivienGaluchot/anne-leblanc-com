@@ -1,0 +1,6 @@
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL))  }}
+{{ $alt := .PlainText | safeHTML }}
+
+<a href="{{ $src.RelPermalink }}">
+{{ partial "render-image" (dict "src" $src "alt" $alt "class" "img-fluid rounded") }}
+</a>

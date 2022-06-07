@@ -1,0 +1,37 @@
+name: hugo
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy'
+        required: false 
+        type: boolean
+  push:
+    branches:
+      - master
+      - int/**
+
+jobs:
+  build:
+    name: build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Install hugo
+      run: wget https://github.com/gohugoio/hugo/releases/download/v0.100.1/hugo_0.100.1_Linux-64bit.deb && sudo apt install ./hugo_0.100.1_Linux-64bit.deb && rm hugo_0.100.1_Linux-64bit.deb
+
+    - name: Build hugo
+      run: ./build_prod.sh
+
+    - name: Deploy hugo
+      if: ${{ github.ref == 'refs/heads/master' || github.event.inputs.deploy }}
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        ./deploy.sh
+

@@ -1,0 +1,24 @@
+{{ $src := .src }}
+
+{{ $tinyw := default "500" }}
+{{ $smallw := default "600" }}
+{{ $mediumw := default "1200" }}
+{{ $largew := default "1500" }}
+
+{{ $tiny := $src.Resize (printf "%sx" $tinyw) }}
+{{ $small := $src.Resize (printf "%sx" $smallw) }}
+{{ $medium := $src.Resize (printf "%sx" $mediumw) }}
+{{ $large := $src.Resize (printf "%sx" $largew) }}
+
+<img alt="{{ $.alt }}" loading="lazy" class="{{ .class }}"
+    srcset="{{ $tiny.RelPermalink }} {{ $tiny.Width }}w {{ $tiny.Height }}h,
+        {{ $small.RelPermalink }} {{ $small.Width }}w {{ $small.Height }}h,
+        {{ $medium.RelPermalink }} {{ $medium.Width }}w {{ $medium.Height }}h,
+        {{ $large.RelPermalink }} {{ $large.Width }}w {{ $large.Height }}h"
+    sizes="(max-width: {{ $tiny.Width }}px) {{ $tiny.Width }}px,
+        (max-width: {{ $small.Width }}px) {{ $small.Width }}px,
+        (max-width: {{ $medium.Width }}px) {{ $medium.Width }}px,
+        {{ $large.Width }}px"
+    src="{{ $src }}"
+    height="{{ $src.Height}}"
+    width="{{ $src.Width }}">

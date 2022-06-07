@@ -1,0 +1,60 @@
+html,
+body {
+    height: 100%;
+}
+
+.a-card:hover {
+    box-shadow: 0 0 0 .25rem rgba(130, 138, 145, .1);
+    cursor: pointer;
+}
+
+.card-summary-top {
+    max-height: 15rem;
+    object-fit: cover;
+}
+
+.full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.header-imgs {
+    display: grid;
+    grid-template-columns: 1fr .5fr;
+    grid-gap: .2rem;
+}
+
+.header-imgs img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.header-imgs>*:nth-child(1) {
+    grid-row: span 2;
+}
+
+.taxo-link {
+    display: inline-block;
+    padding: .35em .65em;
+    border-radius: .7rem;
+    color: white;
+    text-decoration: none;
+    font-size: .75em;
+    line-height: 1rem;
+    font-weight: 700;
+}
+.taxo-category {
+    background-color: rgb(0, 219, 154);
+}
+.taxo-tag {
+    background-color: rgb(5, 101, 130);
+}
+.taxo-link:hover, .taxo-link:focus {
+    box-shadow: 0 0 0 .25rem rgba(0, 0, 0, 0.1);
+    color: white;
+}

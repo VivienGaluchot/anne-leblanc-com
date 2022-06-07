@@ -1,0 +1,29 @@
+{{ define "main" }}
+<main>
+    <div>
+        <h1>{{ .Type | title | singularize }} | <b>{{ .Title }}</b></h1>
+        {{ with .Params.subtitle }}
+        <span>{{.}}</span>
+        {{ end }}
+    </div>
+    <div class="my-4">
+        {{.Content}}
+    </div>
+    <div class="my-5">
+        {{ if gt (len .Pages) 0 }}
+            <b>{{ len .Pages }}</b>
+            {{ if gt (len .Pages) 1 }}
+                {{ "pages" | pluralize }}
+            {{ else }}
+                page
+            {{ end }}
+        {{ end }}
+    
+        {{ range .Pages }}
+        <div class="my-3">
+            {{ partial  "card_summary" . }}
+        </div>
+        {{ end }}
+    </div>
+</main>
+{{ end }}
