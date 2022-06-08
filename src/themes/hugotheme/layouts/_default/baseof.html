@@ -17,26 +17,25 @@
 
 <body>
     <div class="h-100 d-flex flex-column">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-light bg-light al-navbar sticky-top shadow-sm">
             <div class="container">
+                <a class="navbar-toggler-visible navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                     aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav">
                         {{ $currentPage := . }}
                         {{ range .Site.Menus.main }}
                         <li class="nav-item"><a class="nav-link{{if or ($currentPage.IsMenuCurrent "main" .)
                                 ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
                                 title="{{ .Title }}">{{ .Name }}</a></li>
                         {{ end }}
-                    </ul>
-                    <a class="navbar-brand mx-2" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-                    <ul class="navbar-nav me-auto">
+                        <a class="navbar-toggler-invisible navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                         {{ $currentPage := . }}
                         {{ range .Site.Menus.main_right }}
-                        <li class="nav-item"><a class="nav-link{{if or ($currentPage.IsMenuCurrent "main" .)
+                        <li class="nav-item"><a class="nav-link{{if or ($currentPage.IsMenuCurrent "main_right" .)
                                 ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
                                 title="{{ .Title }}">{{ .Name }}</a></li>
                         {{ end }}
@@ -46,37 +45,11 @@
                 </div>
             </div>
         </nav>
-        <nav class="al-navbar">
-            <ul class="left">
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main }}
-                <li>
-                    <a class="nav-link{{if or ($currentPage.IsMenuCurrent "main" .)
-                        ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
-                        title="{{ .Title }}">{{ .Name }}</a>
-                </li>
-                {{ end }}
-            </ul>
-            <div class="center">
-                <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-            </div>
-            <ul class="right">
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main_right }}
-                <li>
-                    <a class="nav-link{{if or ($currentPage.IsMenuCurrent "main" .)
-                        ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
-                        title="{{ .Title }}">{{ .Name }}</a>
-                </li>
-                {{ end }}
-                <li><a class="nav-link" href="#" title="Shop">Shop</a></li>
-            </ul>
-        </nav>
 
         <div class="flex-grow-1 container">
-            <div class="mt-2">
+            {{/*  <div class="mt-2">
                 {{ partial "breadcrumbs.html" . }}
-            </div>
+            </div>  */}}
             <div class="row my-5">
                 <div class="col-xl-6 col-lg-8 col-md-10 mx-auto">
                     {{ block "main" . }}{{ end }}
@@ -88,8 +61,8 @@
             <div class="container">
                 {{ block "footer" . }}
                 <div class="d-flex justify-content-center">
-                    <a href="https://github.com/VivienGaluchot/hugo-tryal" class="m-2 btn btn-sm btn-outline-secondary">
-                        <i class="fa-brands fa-github"></i> source code
+                    <a href="https://github.com/VivienGaluchot/anne-leblanc-com" class="m-2 btn btn-sm btn-outline-secondary">
+                        <i class="fa-brands fa-github"></i>
                     </a>
                 </div>
                 {{ end }}
