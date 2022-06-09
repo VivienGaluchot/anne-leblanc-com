@@ -10,7 +10,7 @@
     <div class="my-4">
         <div class="my-3 text-muted row">
             <div class="col">
-                Read time <b>{{.ReadingTime}} min</b>
+                {{ partial "taxonomy" . }}
             </div>
             <div class="col-auto">
                 {{ if .Draft }}<span class="badge rounded-pill bg-info">draft</span>{{ end }}
@@ -19,15 +19,12 @@
                 {{ .Date.Format "02/01/2006" }}
             </div>
         </div>
-        <div class="my-3">
-            {{ partial "taxonomy" . }}
-        </div>
     </div>
 
-    {{ if .Params.header_imgs }}
-        <div class="header-imgs my-5">
+    {{ if .Page.Resources.ByType "image" }}
+        <div class="my-5">
             {{ $page := .Page }}
-            {{ range .Params.header_imgs }}
+            {{ range $page.Resources.ByType "image" }}
             {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
             <a href="{{ $src.RelPermalink }}">
             {{ partial "render-image" (dict "src" $src "class" "img-fluid rounded") }}
@@ -35,7 +32,6 @@
             {{ end }}
         </div>
     {{ end }}
-    
 
     <div class="my-5">
         {{ if .Params.shop }}

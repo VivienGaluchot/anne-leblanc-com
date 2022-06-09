@@ -1,6 +1,3 @@
 ---
-title: "Anne Leblanc"
-subtitle: "graphiste et illustratrice"
+title: "Accueil"
 ---
-
-TODO

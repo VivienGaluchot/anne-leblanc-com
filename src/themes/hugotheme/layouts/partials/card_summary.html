@@ -1,7 +1,7 @@
 <div class="card a-card" data-href="{{ .Permalink }}">
-    {{ if .Params.header_imgs }}
+    {{ if .Page.Resources.ByType "image" }}
         {{ $page := .Page }}
-        {{ range first 1 .Params.header_imgs }}
+        {{ range first 1 ($page.Resources.ByType "image") }}
         {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
         {{ partial "render-image" (dict "src" $src "class" "img-fluid card-summary-top card-img-top") }}
         {{ end }}
