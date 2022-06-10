@@ -22,13 +22,15 @@
     </div>
 
     {{ if .Page.Resources.ByType "image" }}
-        <div class="my-5">
+        <div class="my-5 row">
             {{ $page := .Page }}
             {{ range $page.Resources.ByType "image" }}
-            {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
-            <a href="{{ $src.RelPermalink }}">
-            {{ partial "render-image" (dict "src" $src "class" "img-fluid rounded") }}
-            </a>
+                <div class="col-6 mx-auto">
+                    {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
+                    <a href="{{ $src.RelPermalink }}">
+                    {{ partial "render-image" (dict "src" $src "class" "img-fluid rounded") }}
+                    </a>
+                </div>
             {{ end }}
         </div>
     {{ end }}

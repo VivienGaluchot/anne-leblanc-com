@@ -5,15 +5,15 @@
             {{ $page := . }}
             {{ range first 1 ($page.Resources.ByType "image") }}
                 {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
-                {{ if gt $src.Height (mul 1.2 $src.Width) }}
-                    <div class="dense-grid-element-r1 dense-grid-element-c1">
-                        {{ partial  "card_summary_index" $page }}
-                    </div>
-                {{ else }}
-                    <div class="dense-grid-element-r1 dense-grid-element-c2">
-                        {{ partial  "card_summary_index" $page }}
-                    </div>
-                {{ end }}
+                {{/*  20rem (col with)  */}}
+                {{ $height := div ( mul 20 $src.Height ) $src.Width }}
+                {{/*  2rem (row height) + 1rem (gap) = 3rem  */}}
+                {{ $bucket := div $height 2 }}
+                {{ $bucket := math.Max 8 $bucket }}
+                {{ $bucket := math.Min 12 $bucket }}
+                <div style="grid-row: span {{ printf "%.0f" $bucket }}">
+                    {{ partial  "card_summary_index" $page }}
+                </div>
             {{ end }}
         {{ end }}
     </div>
