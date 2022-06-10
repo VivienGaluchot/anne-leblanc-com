@@ -1,10 +1,20 @@
 {{ define "main" }}
 <main>
-    <div class="my-5 row g-3">
+    <div class="my-5 dense-grid">
         {{ range .Site.RegularPages }}
-        <div class="col-4">
-            {{ partial  "card_summary_index" . }}
-        </div>
+            {{ $page := . }}
+            {{ range first 1 ($page.Resources.ByType "image") }}
+                {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
+                {{ if gt $src.Height (mul 1.2 $src.Width) }}
+                    <div class="dense-grid-element-r1 dense-grid-element-c1">
+                        {{ partial  "card_summary_index" $page }}
+                    </div>
+                {{ else }}
+                    <div class="dense-grid-element-r1 dense-grid-element-c2">
+                        {{ partial  "card_summary_index" $page }}
+                    </div>
+                {{ end }}
+            {{ end }}
         {{ end }}
     </div>
 </main>

@@ -1,12 +1,9 @@
-<div class="card a-card" data-href="{{ .Permalink }}">
-    {{ if .Page.Resources.ByType "image" }}
-        {{ $page := .Page }}
-        {{ range first 1 ($page.Resources.ByType "image") }}
-        {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
-        {{ partial "render-image" (dict "src" $src "class" "img-fluid card-summary-top card-img-top") }}
-        {{ end }}
+<div class="card text-white a-card card-with-img-bg h-100" data-href="{{ .Permalink }}" tabindex="0">
+    {{ $page := .Page }}
+    {{ range first 1 ($page.Resources.ByType "image") }}
+    {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
+    {{ partial "render-image" (dict "src" $src "class" "img-fluid card-img-top") }}
     {{ end }}
-
     <div class="card-body">
         <div class="row">
             <div class="col">
@@ -20,10 +17,6 @@
             <div class="col-auto">
                 {{ partial "taxonomy" . }}
             </div>
-            <div class="col-auto text-muted fw-lighter">
-                {{ .Date.Format "02/01/2006" }}
-            </div>
         </div>
-        <h6 class="card-subtitle mb-2 text-muted">{{ .Params.subtitle }}</h6>
     </div>
 </div>
