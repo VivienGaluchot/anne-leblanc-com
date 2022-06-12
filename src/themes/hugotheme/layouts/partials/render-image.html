@@ -1,24 +1,43 @@
+{{/*  image ressourece  */}}
 {{ $src := .src }}
 
-{{ $tinyw := default "500" }}
-{{ $smallw := default "600" }}
-{{ $mediumw := default "1200" }}
-{{ $largew := default "1500" }}
 
-{{ $tiny := $src.Resize (printf "%sx" $tinyw) }}
-{{ $small := $src.Resize (printf "%sx" $smallw) }}
-{{ $medium := $src.Resize (printf "%sx" $mediumw) }}
-{{ $large := $src.Resize (printf "%sx" $largew) }}
+{{/*
+    list of img sizes to add to srcset
+    last one will be the fallback image
+*/}}
+{{ $default_img_widths := slice 500 800 1200 }}
+{{ $img_widths := .img_widths | default $default_img_widths }}
+
+{{ $resized_list := slice }}
+{{ $srcset := slice }}
+{{ range $img_widths }}
+    {{ $resized := $src.Resize (printf "%dx" .) }}
+    {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
+    {{ $resized_list = $resized_list | append $resized }}
+
+    {{ $resized := $src.Resize (printf "%dx" (mul 2 .)) }}
+    {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
+    
+    {{ $resized := $src.Resize (printf "%dx" (mul 3 .)) }}
+    {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
+{{ end }}
+{{ $srcset := (delimit $srcset ", ") }}
+
+{{ $fallback := index (last 1 $resized_list) 0 }}
+
+
+{{/*
+    list of sizes rules
+*/}}
+{{ $default_size_rules := slice ("100vw") }}
+{{ $size_rules := .size_rules | default $default_size_rules }}
+
+{{ $sizes := delimit $size_rules ", " }}
 
 <img alt="{{ $.alt }}" loading="lazy" class="{{ .class }}"
-    srcset="{{ $tiny.RelPermalink }} {{ $tiny.Width }}w {{ $tiny.Height }}h,
-        {{ $small.RelPermalink }} {{ $small.Width }}w {{ $small.Height }}h,
-        {{ $medium.RelPermalink }} {{ $medium.Width }}w {{ $medium.Height }}h,
-        {{ $large.RelPermalink }} {{ $large.Width }}w {{ $large.Height }}h"
-    sizes="(max-width: {{ $tiny.Width }}px) {{ $tiny.Width }}px,
-        (max-width: {{ $small.Width }}px) {{ $small.Width }}px,
-        (max-width: {{ $medium.Width }}px) {{ $medium.Width }}px,
-        {{ $large.Width }}px"
-    src="{{ $src }}"
-    height="{{ $src.Height}}"
-    width="{{ $src.Width }}">
+    srcset="{{ $srcset }}"
+    sizes="{{ $sizes }}"
+    src="{{ $fallback.RelPermalink }}"
+    height="{{ $fallback.Height}}"
+    width="{{ $fallback.Width }}">

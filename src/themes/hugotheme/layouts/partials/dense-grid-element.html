@@ -1,8 +1,19 @@
 <div class="card text-white a-card card-with-img-bg h-100" data-href="{{ .Permalink }}" tabindex="0">
     {{ $page := .Page }}
     {{ range first 1 ($page.Resources.ByType "image") }}
-    {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
-    {{ partial "render-image" (dict "src" $src "class" "img-fluid card-img-top") }}
+        {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
+        {{ $img_widths := slice 300 500 }}
+        {{ $size_rules := slice
+            "(max-width: 768px) 50vw"
+            "(max-width: 992px) 33vw"
+            "(max-width: 1200px) 15rem"
+            "20rem"
+        }}
+        {{ partial "render-image"
+            (dict "src" $src
+                "class" "img-fluid card-img-top"
+                "img_widths" $img_widths
+                "size_rules" $size_rules ) }}
     {{ end }}
     <div class="card-body">
         <div class="row">
