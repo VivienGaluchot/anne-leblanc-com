@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Anne Leblanc</title>
+    <link>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/</link>
+    <description>Recent content in Tags on Anne Leblanc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Jun 2022 15:07:09 +0000</lastBuildDate><atom:link href="https://viviengaluchot.github.io/anne-leblanc-com/public/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>city</title>
+      <link>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/city/</link>
+      <pubDate>Sun, 05 Jun 2022 15:07:09 +0000</pubDate>
+      
+      <guid>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/city/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>picture</title>
+      <link>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/picture/</link>
+      <pubDate>Sun, 05 Jun 2022 15:07:09 +0000</pubDate>
+      
+      <guid>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/picture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plante</title>
+      <link>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/plante/</link>
+      <pubDate>Sun, 05 Jun 2022 15:07:09 +0000</pubDate>
+      
+      <guid>https://viviengaluchot.github.io/anne-leblanc-com/public/tags/plante/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

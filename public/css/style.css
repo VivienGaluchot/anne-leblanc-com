@@ -1,0 +1,142 @@
+html,
+body {
+    height: 100%;
+}
+
+/* utils */
+
+.full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* cards */
+
+.a-card:hover {
+    box-shadow: 0 0 0 .25rem rgba(130, 138, 145, .1);
+    cursor: pointer;
+}
+
+.card-summary-top {
+    max-height: 15rem;
+    object-fit: cover;
+}
+
+/* index cards */
+
+.card-with-img-bg {
+    overflow: hidden;
+}
+
+.card-with-img-bg .card-img-top {
+    border-radius: var(--bs-card-inner-border-radius);
+    transition: .2s all;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.card-with-img-bg:hover .card-img-top, 
+.card-with-img-bg:focus .card-img-top {
+    transform: scale(1.05);
+}
+.card-with-img-bg:active .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-with-img-bg .card-body {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+/* taxonomy */
+
+.taxo-link {
+    display: inline-block;
+    padding: .35em .65em;
+    border-radius: .7rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .75em;
+    line-height: 1rem;
+}
+.taxo-category {
+    background-color: rgb(0, 219, 154);
+}
+.taxo-tag {
+    background-color: rgb(5, 101, 130);
+}
+.taxo-link:hover, .taxo-link:focus {
+    box-shadow: 0 0 0 .25rem rgba(0, 0, 0, 0.1);
+    color: white;
+    text-decoration: underline;
+}
+
+/* navbar */
+
+.al-navbar .navbar-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: left;
+}
+
+.navbar-toggler-invisible {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .al-navbar .navbar-nav {
+        grid-template-columns: repeat(5, 1fr);
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .al-navbar .navbar-brand {
+        margin: 0;
+    }
+
+    .navbar-toggler-visible {
+        display: none;
+    }
+
+    .navbar-toggler-invisible {
+        display: inherit;
+    }
+}
+
+/* dense grid */
+
+.dense-grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 20rem); 
+    grid-auto-rows: 2.2rem;
+    grid-gap: .5rem;
+}
+
+@media (max-width: 1200px) {
+    .dense-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 2.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .dense-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dense-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1.5rem;
+    }
+}
