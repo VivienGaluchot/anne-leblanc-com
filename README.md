@@ -1,6 +1,6 @@
 # Anne leblanc com
 
-Demo at [https://viviengaluchot.github.io/anne-leblanc-com/](https://viviengaluchot.github.io/anne-leblanc-com/).
+Demo at [https://viviengaluchot.github.io/anne-leblanc-com/public/](https://viviengaluchot.github.io/anne-leblanc-com/public/).
 
 
 # Dev container

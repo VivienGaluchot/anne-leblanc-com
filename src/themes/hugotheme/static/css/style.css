@@ -62,9 +62,9 @@ body {
     border-radius: .7rem;
     color: white;
     text-decoration: none;
+    font-weight: 700;
     font-size: .75em;
     line-height: 1rem;
-    font-weight: 700;
 }
 .taxo-category {
     background-color: rgb(0, 219, 154);

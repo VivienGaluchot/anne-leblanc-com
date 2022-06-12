@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ .Site.Home.RelPermalink }}css/style.css">
 
     <title>{{ block "page_title" . }}{{ end }}{{ .Site.Title }}</title>
 </head>
@@ -19,7 +19,7 @@
     <div class="h-100 d-flex flex-column">
         <nav class="navbar navbar-expand-md navbar-light bg-light al-navbar sticky-top shadow-sm">
             <div class="container">
-                <a class="navbar-toggler-visible navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+                <a class="navbar-toggler-visible navbar-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                     aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,13 +27,14 @@
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav">
                         {{ $currentPage := . }}
+                        <li class="nav-item"><a class="nav-link{{if eq .Page.RelPermalink .Site.Home.RelPermalink }} active {{end}}" 
+                            href="{{ .Site.Home.RelPermalink }}" title="Work">Work</a></li>
                         {{ range .Site.Menus.main }}
                         <li class="nav-item"><a class="nav-link{{if or ($currentPage.IsMenuCurrent "main" .)
-                                ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
-                                title="{{ .Title }}">{{ .Name }}</a></li>
+                            ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
+                            title="{{ .Title }}">{{ .Name }}</a></li>
                         {{ end }}
-                        <a class="navbar-toggler-invisible navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-                        {{ $currentPage := . }}
+                        <a class="navbar-toggler-invisible navbar-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
                         {{ range .Site.Menus.main_right }}
                         <li class="nav-item"><a class="nav-link{{if or ($currentPage.IsMenuCurrent "main_right" .)
                                 ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}"
@@ -72,7 +73,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="{{ .Site.BaseURL }}js/app.js"></script>
+    <script src="{{ .Site.Home.RelPermalink }}js/app.js"></script>
 </body>
 
 </html>

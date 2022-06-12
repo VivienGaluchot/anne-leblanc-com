@@ -1,5 +1,5 @@
 ---
-title: "Presentation"
+title: "Présentation"
 menu:
   main:
     weight: 2

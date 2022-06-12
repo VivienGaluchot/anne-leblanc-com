@@ -4,9 +4,9 @@
         {{ $src := $page.Resources.GetMatch (. | safeURL)  }}
         {{ $img_widths := slice 300 500 }}
         {{ $size_rules := slice
-            "(max-width: 768px) 50vw"
-            "(max-width: 992px) 33vw"
-            "(max-width: 1200px) 15rem"
+            "(max-width: 768px) 100vw"
+            "(max-width: 992px) 66vw"
+            "(max-width: 1200px) 30rem"
             "20rem"
         }}
         {{ partial "render-image"
