@@ -12,14 +12,14 @@
 {{ $resized_list := slice }}
 {{ $srcset := slice }}
 {{ range $img_widths }}
-    {{ $resized := $src.Resize (printf "%dx" .) }}
+    {{ $resized := $src.Resize (printf "%dx webp" .) }}
     {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
     {{ $resized_list = $resized_list | append $resized }}
 
-    {{ $resized := $src.Resize (printf "%dx" (mul 2 .)) }}
+    {{ $resized := $src.Resize (printf "%dx webp" (mul 2 .)) }}
     {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
     
-    {{ $resized := $src.Resize (printf "%dx" (mul 3 .)) }}
+    {{ $resized := $src.Resize (printf "%dx webp" (mul 3 .)) }}
     {{ $srcset = $srcset | append (printf "%s %dw %dh" $resized.RelPermalink $resized.Width $resized.Height) }}
 {{ end }}
 {{ $srcset := (delimit $srcset ", ") }}

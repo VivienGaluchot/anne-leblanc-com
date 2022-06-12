@@ -23,7 +23,7 @@ jobs:
         fetch-depth: 0
     
     - name: Install hugo
-      run: wget https://github.com/gohugoio/hugo/releases/download/v0.100.1/hugo_0.100.1_Linux-64bit.deb && sudo apt install ./hugo_0.100.1_Linux-64bit.deb && rm hugo_0.100.1_Linux-64bit.deb
+      run: wget https://github.com/gohugoio/hugo/releases/download/v0.100.2/hugo_extended_0.100.2_Linux-64bit.deb && sudo apt install ./hugo_extended_0.100.2_Linux-64bit.deb && rm hugo_extended_0.100.2_Linux-64bit.deb
 
     - name: Build hugo
       run: ./build_prod.sh
